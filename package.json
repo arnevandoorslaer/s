@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": {
-    "node": "12.16.x"
-  },
   "scripts": {
     "devStart": "nodemon server.js"
   },
@@ -15,7 +12,6 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "mongoose": "^5.9.1",
-    "firebase": "^1.0.0",
     "shortid": "^2.2.15"
   },
   "devDependencies": {
