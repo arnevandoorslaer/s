@@ -11,8 +11,8 @@
   "dependencies": {
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "firebase": "^7.14.5",
     "mongoose": "^5.9.1",
-    "firebase": "^0.6.4",
     "shortid": "^2.2.15"
   },
   "devDependencies": {
