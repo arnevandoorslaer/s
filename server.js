@@ -29,7 +29,7 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/shortUrls', async (req, res) => {
-  await await db.collection('urls').add({ full: req.body.fullUrl, short: getShortId(), clicks: 0})
+  await db.collection('urls').add({ full: req.body.fullUrl, short: getShortId(), clicks: 0})
   res.redirect('/')
 })
 
