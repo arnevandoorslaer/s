@@ -17,7 +17,7 @@ function draw() {
 function displayUrl(short, full,id) {
   let tr = $('<tr/>',{ id });
 
-  $(`<td>${short}</td>`).appendTo(tr);
+  $(`<td class="short">${short}</td>`).click(() => copy(short)).appendTo(tr);
   $(`<td><a href='${full}'>${full}</a></td>`).appendTo(tr);
   $(`<td class="remove"><strong>x</strong></td>`).click(() => removeUrl(id)).appendTo(tr);
   
@@ -55,4 +55,8 @@ function removeUrl(id) {
 
 function getShortId(){
   return Math.random().toString(36).substring(7);
+}
+
+function copy(short) {
+  navigator.clipboard.writeText(`${this.location.origin}/${short}`)
 }
