@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+</body>
+
+</html lang="en">
+<html>
+
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" media="all" href="css/simple.css">
+  <link rel="stylesheet" media="all" href="css/bootstrap.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body class="container-bg">
+
+  <main class="container">
+    <section>
+      <div class="input-group" id="search">
+        <button type="submit" class="input-group-btn" onclick="addUrl()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </section>
+    <section>
+      <table id="url_list" class="table table-dark table-striped">
+        <tbody id="url_list_body"></tbody>
+      </table>
+    </section>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+  <script src="js/firebase.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/lists.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
