@@ -26,31 +26,47 @@ function displayUrl(short, full,id) {
 }
 
 function createInput() {
+  const listener = addEventListener('keyup', function (e) {
+    let fullUrl = $("#fullUrl").val();
+    let shortUrl = $("#shortUrl").val();
+    if (e.keyCode == 13) {
+      addUrl(fullUrl, shortUrl);
+    }
+  })
+
+
   $('<input/>', {
     class: 'form-control',
-    name: 'searchTerm',
+    name: 'fullUrl',
     type: 'text',
-    id: 'searchTerm',
-    placeholder: 'What are you looking for?',
-    addEventListener: addEventListener('keyup', function (e) {
-      let searchTerm = $("#searchTerm").val();
-      if (e.keyCode == 13) {
-        addUrl(searchTerm);
-      }
-    }),
+    id: 'fullUrl',
+    placeholder: 'full-url',
+    addEventListener: listener,
+  }).appendTo($("#search"));
+
+  $('<input/>', {
+    class: 'form-control',
+    name: 'shortUrl',
+    type: 'text',
+    id: 'shortUrl',
+    placeholder: 'short-url',
+    addEventListener: listener,
   }).appendTo($("#search"))
 }
 
 async function addUrl(full, short) {
-  $("#searchTerm").empty();
+  $("#fullUrl").empty();
+  $("#shortUrl").empty();
+  console.log(short)
   if(!full) return;
   if(!full.includes('http')) return;
-  await db.collection('urls').add({ full, short: short ?? getShortId(), clicks: 0})
+  await db.collection('urls').add({ full, short: (!short || short == '') ? getShortId() : short, clicks: 0})
   draw();
 }
 
-function removeUrl(id) {
-  db.collection('urls').doc(id).delete();
+async function removeUrl(id) {
+  await db.collection('urls').doc(id).delete();
+  draw();
 }
 
 function getShortId(){

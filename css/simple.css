@@ -2,7 +2,7 @@
   background-color: #181712;
 }
 
-#searchTerm {
+#fullUrl, #shortUrl {
   background-color: #181712;
   color: #fefefe;
 }

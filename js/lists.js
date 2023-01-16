@@ -1,6 +1,6 @@
-const full_urls = [];
-const short_urls = [];
-const ids = [];
+let full_urls = [];
+let short_urls = [];
+let ids = [];
 
 collect();
 
@@ -38,20 +38,15 @@ function escapeHtml(unsafe) {
   }
 
   function remove(url) {
-    removeA(full_urls, url.doc.data().full);
-    removeA(short_urls, url.doc.data().short);
-    removeA(ids, url.doc.id);
+    full_urls = removeA(full_urls, url.doc.data().full);
+    short_urls = removeA(short_urls, url.doc.data().short);
+    ids = removeA(ids, url.doc.id);
 }
 
-  function removeA(arr) {
-    var what, a = arguments,
-        L = a.length,
-        ax;
-    while (L > 1 && arr.length) {
-        what = a[--L];
-        while ((ax = arr.indexOf(what)) !== -1) {
-            arr.splice(ax, 1);
-        }
+  function removeA(array,value) {
+    const index = array.indexOf(value);
+    if (index > -1) { // only splice array when item is found
+      array.splice(index, 1); // 2nd parameter means remove one item only
     }
-    return arr;
+    return array;
 }
