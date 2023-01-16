@@ -57,7 +57,6 @@ function createInput() {
 async function addUrl(full, short) {
   $("#fullUrl").empty();
   $("#shortUrl").empty();
-  console.log(short)
   if(!full) return;
   if(!full.includes('http')) return;
   await db.collection('urls').add({ full, short: (!short || short == '') ? getShortId() : short, clicks: 0})
