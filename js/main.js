@@ -1,20 +1,16 @@
 window.onload = function () {
   setTimeout(draw, 1000);
-  setTimeout(createInput, 500);
+  setTimeout(createInput, 100);
 };
-
-
 
 db.collection('urls').onSnapshot(() => draw());
 
 function draw() {
   $("#url_list_body").empty();
-  for (let i = 0; i < short_urls.length; i++) {
-    displayUrl(short_urls[i], full_urls[i],ids[i]);
-  }
+  urls.map(url => displayUrl(url))
 }
 
-function displayUrl(short, full,id) {
+function displayUrl({short, full, id}) {
   let tr = $('<tr/>',{ id });
 
   $(`<td class="short">${short}</td>`).click(() => copy(short)).appendTo(tr);
@@ -22,41 +18,23 @@ function displayUrl(short, full,id) {
   $(`<td class="remove"><strong>x</strong></td>`).click(() => removeUrl(id)).appendTo(tr);
   
   tr.appendTo($('#url_list_body'))
-
 }
 
 function createInput() {
   const listener = addEventListener('keyup', function (e) {
-    let fullUrl = $("#fullUrl").val();
-    let shortUrl = $("#shortUrl").val();
-    if (e.keyCode == 13) {
-      addUrl(fullUrl, shortUrl);
-    }
+    if (e.keyCode == 13)  addUrl();
   })
 
+  const inputAttributes = { class: 'form-control', type: 'text', addEventListener: listener };
 
-  $('<input/>', {
-    class: 'form-control',
-    name: 'fullUrl',
-    type: 'text',
-    id: 'fullUrl',
-    placeholder: 'full-url',
-    addEventListener: listener,
-  }).appendTo($("#search"));
-
-  $('<input/>', {
-    class: 'form-control',
-    name: 'shortUrl',
-    type: 'text',
-    id: 'shortUrl',
-    placeholder: 'short-url',
-    addEventListener: listener,
-  }).appendTo($("#search"))
+  $('<input/>', {... inputAttributes, placeholder: 'full-url', name: 'fullUrl', id: 'fullUrl'}).appendTo($("#search"));
+  $('<input/>', {... inputAttributes, placeholder: 'short-url', name: 'shortUrl', id: 'shortUrl'}).appendTo($("#search"));
 }
 
-async function addUrl(full, short) {
-  $("#fullUrl").empty();
-  $("#shortUrl").empty();
+async function addUrl() {
+  const [full, short] = [$("#fullUrl").val(), $("#shortUrl").val()];
+  $("#fullUrl").val('');
+  $("#shortUrl").val('');
   if(!full) return;
   if(!full.includes('http')) return;
   await db.collection('urls').add({ full, short: (!short || short == '') ? getShortId() : short, clicks: 0})

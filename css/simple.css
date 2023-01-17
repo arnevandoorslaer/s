@@ -11,7 +11,7 @@
   background-color: #B7AB5C;
 }
 
-#url_list table th,#search_list table th{
+#url_list table th {
   color: #fefefe;
   background-color: #6A6A6A;
 }
@@ -25,7 +25,6 @@
   float: right;
   border: solid black;
   border-width: 0 3px 3px 0;
-  display: inline-block;
   padding: 3px;
 }
 
