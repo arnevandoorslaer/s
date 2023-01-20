@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/shrinker/static/css/main.d7e26831.css",
+    "main.js": "/shrinker/static/js/main.4a895d74.js",
+    "static/js/787.a5747b7b.chunk.js": "/shrinker/static/js/787.a5747b7b.chunk.js",
+    "index.html": "/shrinker/index.html",
+    "main.d7e26831.css.map": "/shrinker/static/css/main.d7e26831.css.map",
+    "main.4a895d74.js.map": "/shrinker/static/js/main.4a895d74.js.map",
+    "787.a5747b7b.chunk.js.map": "/shrinker/static/js/787.a5747b7b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7e26831.css",
+    "static/js/main.4a895d74.js"
+  ]
+}
