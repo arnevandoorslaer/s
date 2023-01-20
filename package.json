@@ -1,7 +1,7 @@
 {
   "name": "shrinker",
   "version": "0.1.0",
-  "homepage": "https://arnevandoorslaer.github.io/shrinker",
+  "homepage": "https://arnevandoorslaer.github.io/s",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
