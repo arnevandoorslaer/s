@@ -73,10 +73,8 @@ function App() {
                     />
                   </button>
                 </td>
-                <td className='w-75'>
-                  <span className='text-truncate'>
-                    {full.substring(0, width! / 30)}
-                  </span>
+                <td className='w-75 text-truncate'>
+                  <span>{full}</span>
                 </td>
                 <td className='text-center'>
                   <button className='btn text-white p-0'>
