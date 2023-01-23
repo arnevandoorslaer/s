@@ -32,11 +32,11 @@ function App() {
 
   return (
     <main className='container'>
-      <div className='d-flex mt-5 mb-4 border form-group'>
+      <div className='mt-5 mb-4 form-group w-100'>
         <input
           placeholder='bzf03a'
           value={short}
-          className='w-25'
+          className='col-5 p-0 m-0'
           onChange={(e) => setShort(e.target.value)}
           onKeyUp={(e) => {
             if (e.key === 'Enter') addUrl();
@@ -45,13 +45,13 @@ function App() {
         <input
           placeholder='https://example.com'
           value={full}
-          className='w-75'
+          className='col-6 p-0 m-0'
           onChange={(e) => setFull(e.target.value)}
           onKeyUp={(e) => {
             if (e.key === 'Enter') addUrl();
           }}
         />
-        <button className='btn btn-dark p-2' onClick={addUrl}>
+        <button className='col-1 btn btn-dark p-0' onClick={addUrl}>
           <FontAwesomeIcon icon={faPlus} className='align-middle' />
         </button>
       </div>
@@ -59,8 +59,8 @@ function App() {
         <tbody>
           {urls &&
             urls.map(({ id, short, full }) => (
-              <tr key={id} className='d-flex justify-content-between'>
-                <td className='d-flex justify-content-between w-25'>
+              <tr key={id}>
+                <td className='col-5 d-flex justify-content-between w-100'>
                   <span>{short.substring(0, 10)}</span>
                   <button className='btn text-white p-0'>
                     <FontAwesomeIcon
@@ -73,11 +73,18 @@ function App() {
                     />
                   </button>
                 </td>
-                <td className='w-75 text-truncate'>
-                  <span>{full}</span>
+                <td className='col-6' style={{ maxWidth: '10em' }}>
+                  <div
+                    style={{
+                      height: '20px',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {full}
+                  </div>
                 </td>
-                <td className='text-center'>
-                  <button className='btn text-white p-0'>
+                <td className='col-1 text-center'>
+                  <button className='btn text-white p-0 m-0'>
                     <FontAwesomeIcon
                       icon={faClose}
                       className='align-middle'
