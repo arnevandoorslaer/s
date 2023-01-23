@@ -2,14 +2,12 @@ import './App.css';
 import { useFirestore } from './hooks/useFirestore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faCopy, faPlus } from '@fortawesome/free-solid-svg-icons';
-import useWindowDimensions from './hooks/useWindowDimensions';
 import { firestore, timestamp } from './firebase/config';
 import { useState } from 'react';
 import validator from 'validator';
 
 function App() {
   const { docs: urls } = useFirestore('urls');
-  const { width } = useWindowDimensions();
   const [short, setShort] = useState('');
   const [full, setFull] = useState('');
 
@@ -32,11 +30,11 @@ function App() {
 
   return (
     <main className='container'>
-      <div className='mt-5 mb-4 form-group w-100'>
+      <div className='mt-5 mb-4 form-group'>
         <input
           placeholder='bzf03a'
           value={short}
-          className='col-5 p-0 m-0'
+          className='col-5 p-1'
           onChange={(e) => setShort(e.target.value)}
           onKeyUp={(e) => {
             if (e.key === 'Enter') addUrl();
@@ -45,14 +43,14 @@ function App() {
         <input
           placeholder='https://example.com'
           value={full}
-          className='col-6 p-0 m-0'
+          className='col-6 p-1'
           onChange={(e) => setFull(e.target.value)}
           onKeyUp={(e) => {
             if (e.key === 'Enter') addUrl();
           }}
         />
-        <button className='col-1 btn btn-dark p-0' onClick={addUrl}>
-          <FontAwesomeIcon icon={faPlus} className='align-middle' />
+        <button className='col-1 btn btn-dark p-1' onClick={addUrl}>
+          <FontAwesomeIcon icon={faPlus} />
         </button>
       </div>
       <table className='table table-striped table-dark table-bordered'>
@@ -76,7 +74,7 @@ function App() {
                 <td className='col-6' style={{ maxWidth: '10em' }}>
                   <div
                     style={{
-                      height: '20px',
+                      height: '25px',
                       overflow: 'hidden',
                     }}
                   >
